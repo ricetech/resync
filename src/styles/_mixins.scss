@@ -1,0 +1,19 @@
+@mixin breakpoint-min($min-width) {
+  @media (min-width: #{$min-width}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($max-width) {
+  @media (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin hide-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
