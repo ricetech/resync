@@ -35,7 +35,7 @@ export const Insights = () => {
       </Badge>
     ));
   return (
-    <Col className="px-4" lg="12">
+    <Col className="px-4" lg="8">
       <h1>Assignment Name</h1>
       {badgeComponents()}
       <span className="px-2">Due: {task.deadline.toLocaleDateString()}</span>

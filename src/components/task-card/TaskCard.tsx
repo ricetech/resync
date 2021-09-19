@@ -25,8 +25,14 @@ export const TaskCard = ({
       </Badge>
     ));
 
+  const handleClick = () => {
+    if (!isStudent) {
+      history.push("/dash/admin-tasks/insights/?id=taskId");
+    }
+  };
+
   return (
-    <Card className="mb-4">
+    <Card className="mb-4" onClick={handleClick}>
       <Card.Body className="px-4">
         <div className="spread-horizontally">
           <div>
