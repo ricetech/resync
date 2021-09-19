@@ -10,7 +10,6 @@ export const ProgressBar = ({
   percentInProgress,
   percentCompleted,
 }: IProgressBarProps) => {
-  console.log(percentInProgress);
   return (
     <div className="prog-bar-wrapper">
       <div
