@@ -43,6 +43,7 @@ const taskCardComponents = () =>
   tasks.map((task: ITask) => (
     <TaskCard
       key={task.taskId}
+      isStudent={true}
       task={task}
       numStudents={numStudents}
       curStatus={"PROGRESS"}

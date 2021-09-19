@@ -4,12 +4,18 @@ import { useHistory } from "react-router-dom";
 import { ITask } from "../../shared/interfaces";
 import ProgressBar from "../progress-bar";
 interface ITaskCardProps {
+  isStudent: boolean;
   task: ITask;
   numStudents: number;
   curStatus: string;
 }
 
-export const TaskCard = ({ task, numStudents, curStatus }: ITaskCardProps) => {
+export const TaskCard = ({
+  isStudent,
+  task,
+  numStudents,
+  curStatus,
+}: ITaskCardProps) => {
   const history = useHistory();
 
   const badgeComponents = () =>
@@ -33,17 +39,21 @@ export const TaskCard = ({ task, numStudents, curStatus }: ITaskCardProps) => {
               Due: {task.deadline.toLocaleDateString()}
             </span>
           </div>
-          <div>
-            {curStatus === "PROGRESS" ? (
-              <Button variant="dark" size="sm" className="mt-2">
-                Begin Task
-              </Button>
-            ) : (
-              <Button variant="outline-dark" size="sm" className="mt-2">
-                Mark as Completed
-              </Button>
-            )}
-          </div>
+          {isStudent ? (
+            <div>
+              {curStatus === "PROGRESS" ? (
+                <Button variant="dark" size="sm" className="mt-2">
+                  Begin Task
+                </Button>
+              ) : (
+                <Button variant="outline-dark" size="sm" className="mt-2">
+                  Mark as Completed
+                </Button>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
         <ProgressBar
