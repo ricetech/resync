@@ -8,4 +8,16 @@ export interface ICourse {
 
 export interface ITask {
   taskId: string;
+  name: string;
+  startDate: Date;
+  deadline: Date;
+  softDeadline: Date;
+  typeTag: string[];
+  displayDate: boolean;
+  startTimes: ITaskTracking[];
+  endTimes: ITaskTracking[];
+  startPercent: Date[];
+  endPercent: Date[];
 }
+
+export interface ITaskTracking {}
