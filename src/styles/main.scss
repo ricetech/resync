@@ -15,4 +15,10 @@
   cursor: pointer;
 }
 
+.spread-horizontally {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @import "~bootstrap/scss/bootstrap";

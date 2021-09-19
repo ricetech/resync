@@ -7,7 +7,7 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import DashboardNavbar from "../../components/dashboard-navbar";
 import CourseCard from "../../components/course-card";
 import UpcomingList from "../../components/upcoming-list";
@@ -43,7 +43,15 @@ const courseCardComponents = () =>
 
 export const StudentDashboard = () => {
   let { path, url } = useRouteMatch();
-  const [key, setKey] = useState("home");
+  const [courseMode, setCourseMode] = useState("enrolled");
+
+  const viewTaught = () => {
+    setCourseMode("teaching");
+  };
+
+  const viewEnrolled = () => {
+    setCourseMode("enrolled");
+  };
 
   return (
     <>
@@ -54,7 +62,36 @@ export const StudentDashboard = () => {
             <Route exact path={path}>
               <Col className="px-4" lg="8">
                 <h1>Courses</h1>
-                {courseCardComponents()}
+                {courseMode === "enrolled" ? (
+                  <>
+                    <Button variant="dark" size="sm" className="mb-3">
+                      Join Course
+                    </Button>{" "}
+                    <Button
+                      variant="outline-dark"
+                      size="sm"
+                      className="mb-3"
+                      onClick={viewTaught}
+                    >
+                      View courses you teach
+                    </Button>
+                    {courseCardComponents()}
+                  </>
+                ) : (
+                  <>
+                    <Button variant="dark" size="sm" className="mb-3">
+                      Create a course
+                    </Button>{" "}
+                    <Button
+                      variant="outline-dark"
+                      size="sm"
+                      className="mb-3"
+                      onClick={viewEnrolled}
+                    >
+                      View courses you're in
+                    </Button>
+                  </>
+                )}
               </Col>
               <Col className="px-4" lg="4">
                 <h1>Upcoming</h1>
