@@ -1,30 +1,16 @@
 import React, { useState, useRef } from "react";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   useLocation,
   useHistory,
   useRouteMatch,
 } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  Overlay,
-  Tooltip,
-} from "react-bootstrap";
+import { Col, Button, Overlay, Tooltip } from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
 import NewTask from "../new-task";
 import Insights from "../insights";
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
 
 const tasks = [
   {
@@ -56,8 +42,7 @@ const taskCardComponents = () =>
   ));
 
 export const TaskPageAdmin = () => {
-  let query = useQuery();
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   const history = useHistory();
 
   const [show, setShow] = useState(false);

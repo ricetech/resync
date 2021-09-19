@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  Badge,
-  Table,
-} from "react-bootstrap";
+import { Col, Badge, Table } from "react-bootstrap";
 import ProgressBar from "../../components/progress-bar";
 
 const task = {

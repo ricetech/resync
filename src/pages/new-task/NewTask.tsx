@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Col, Button, Form } from "react-bootstrap";
 
 export const NewTask = () => {
   const [formState, setFormState] = useState({

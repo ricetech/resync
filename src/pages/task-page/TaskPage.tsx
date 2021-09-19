@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Link, useLocation } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import { Col } from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
 
@@ -35,10 +35,6 @@ const tasks = [
 
 const numStudents = 5;
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
-
 const taskCardComponents = () =>
   tasks.map((task: ITask) => (
     <TaskCard
@@ -51,7 +47,6 @@ const taskCardComponents = () =>
   ));
 
 export const TaskPage = () => {
-  let query = useQuery();
   return (
     <>
       <Col className="px-4" lg="10">

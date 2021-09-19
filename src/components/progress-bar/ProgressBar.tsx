@@ -1,6 +1,4 @@
 import React from "react";
-import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
-
 interface IProgressBarProps {
   percentInProgress: number;
   percentCompleted: number;

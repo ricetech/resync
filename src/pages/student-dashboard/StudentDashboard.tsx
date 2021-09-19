@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import DashboardNavbar from "../../components/dashboard-navbar";
 import CourseCard from "../../components/course-card";
 import CourseCardAdmin from "../../components/course-card-admin";
 import UpcomingList from "../../components/upcoming-list";
-import { ICourse, ITask } from "../../shared/interfaces";
+import { ICourse } from "../../shared/interfaces";
 import TaskPage from "../task-page";
 import TaskPageAdmin from "../task-page-admin";
 
@@ -71,7 +64,7 @@ const adminCourseCardComponents = () =>
   ));
 
 export const StudentDashboard = () => {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   const [courseMode, setCourseMode] = useState("enrolled");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
