@@ -17,3 +17,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@mixin card-top($color) {
+  padding: 1rem;
+  margin-bottom: 0;
+  background-color: $color;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}

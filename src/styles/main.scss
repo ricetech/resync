@@ -7,5 +7,10 @@
 @import "../pages/admin-dashboard/admin-dashboard";
 
 @import "../components/dashboard-navbar/dashboard-navbar";
+@import "../components/course-card/course-card";
+
+.clickable {
+  cursor: pointer;
+}
 
 @import "~bootstrap/scss/bootstrap";
