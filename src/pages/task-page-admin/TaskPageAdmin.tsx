@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,15 @@ import {
   useHistory,
   useRouteMatch,
 } from "react-router-dom";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+  Overlay,
+  Tooltip,
+} from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
 import NewTask from "../new-task";
@@ -50,9 +58,20 @@ export const TaskPageAdmin = () => {
   let query = useQuery();
   let { path, url } = useRouteMatch();
   const history = useHistory();
+
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+
   const addCourse = () => {
     history.push(`${path}/add-course/courseid`);
   };
+  const copyInviteCode = () => {
+    setShow(!show);
+    navigator.clipboard.writeText("CODE");
+  };
+
+  const viewAllStudents = () => {};
+
   return (
     <>
       <Switch>
@@ -67,6 +86,30 @@ export const TaskPageAdmin = () => {
             >
               Add Task
             </Button>
+            <Button
+              ref={target}
+              variant="dark"
+              size="sm"
+              className="mb-3 mx-2"
+              onClick={copyInviteCode}
+            >
+              Copy Invite Code
+            </Button>
+            <Button
+              variant="dark"
+              size="sm"
+              className="mb-3"
+              onClick={viewAllStudents}
+            >
+              View all Students
+            </Button>
+            <Overlay target={target.current} show={show} placement="top">
+              {(props) => (
+                <Tooltip id="overlay-example" {...props}>
+                  Copied!
+                </Tooltip>
+              )}
+            </Overlay>
             {taskCardComponents()}
           </Col>
         </Route>
