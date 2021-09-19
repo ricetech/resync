@@ -1,9 +1,11 @@
 import React from "react";
+import DashboardNavbar from "../../components/dashboard-navbar";
 
 export const HomePage = () => {
   return (
     <>
-      <h1>HomePage</h1>
+      <DashboardNavbar isDashboard={false} />
+      <div className="landing">Hello</div>
     </>
   );
 };

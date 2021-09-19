@@ -10,7 +10,7 @@ export const NewTask = () => {
     isSuggested: false,
   });
 
-  const handleTaskNameChange = (e) => {
+  const handleTaskNameChange = (e: any) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 

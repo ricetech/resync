@@ -87,7 +87,7 @@ export const StudentDashboard = () => {
     setCourseMode("enrolled");
   };
 
-  const handleCourseCodeChange = (e) => {
+  const handleCourseCodeChange = (e: any) => {
     setCourseCode(e.target.value);
   };
 
@@ -100,7 +100,7 @@ export const StudentDashboard = () => {
 
   return (
     <>
-      <DashboardNavbar />
+      <DashboardNavbar isDashboard={true} />
       <Container>
         <Row className="py-5">
           <Switch>
