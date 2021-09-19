@@ -1,9 +1,18 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import DashboardNavbar from "../../components/dashboard-navbar";
 import CourseCard from "../../components/course-card";
 import UpcomingList from "../../components/upcoming-list";
 import { ICourse, ITask } from "../../shared/interfaces";
+import TaskPage from "../task-page";
 
 const courses: ICourse[] = [
   {
@@ -33,19 +42,28 @@ const courseCardComponents = () =>
   ));
 
 export const StudentDashboard = () => {
+  let { path, url } = useRouteMatch();
+
   return (
     <>
       <DashboardNavbar />
       <Container>
         <Row className="py-5">
-          <Col className="px-4" lg="8">
-            <h1>Courses</h1>
-            {courseCardComponents()}
-          </Col>
-          <Col className="px-4" lg="4">
-            <h1>Upcoming</h1>
-            <UpcomingList />
-          </Col>
+          <Switch>
+            <Route exact path={path}>
+              <Col className="px-4" lg="8">
+                <h1>Courses</h1>
+                {courseCardComponents()}
+              </Col>
+              <Col className="px-4" lg="4">
+                <h1>Upcoming</h1>
+                <UpcomingList />
+              </Col>
+            </Route>
+            <Route path={`${path}/:courseId`}>
+              <TaskPage />
+            </Route>
+          </Switch>
         </Row>
       </Container>
     </>

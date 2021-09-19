@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/student">
+        <Route path="/dash">
           <StudentDashboard />
         </Route>
         <Route path="/admin">

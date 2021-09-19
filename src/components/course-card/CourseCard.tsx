@@ -1,17 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-
+import { useHistory } from "react-router-dom";
 interface ICourseCardProps {
   title: string;
   profs: string[];
   tasks: number;
 }
 
-const handleCourseClick = () => {};
-
 export const CourseCard = ({ title, profs, tasks }: ICourseCardProps) => {
+  const history = useHistory();
   return (
-    <Card className="clickable mb-4" onClick={handleCourseClick}>
+    <Card
+      className="clickable mb-4"
+      onClick={() => history.push("/dash/task/?id=coursename")}
+    >
       <div className="course-card-top-pink" />
       <Card.Body className="px-4">
         <div className="course-card-body">
