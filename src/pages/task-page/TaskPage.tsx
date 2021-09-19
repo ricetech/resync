@@ -13,19 +13,23 @@ const tasks = [
     softDeadline: new Date(),
     typeTag: ["Assignment"],
     displayDate: true,
-    startTimes: [1, 2, 3],
+    startTimes: [1, 2],
     endTimes: [1, 3],
     startPercent: [],
     endPercent: [],
   },
 ];
 
+const numStudents = 5;
+
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 
 const taskCardComponents = () =>
-  tasks.map((task: ITask) => <TaskCard task={task} />);
+  tasks.map((task: ITask) => (
+    <TaskCard task={task} numStudents={numStudents} />
+  ));
 
 export const TaskPage = () => {
   let query = useQuery();

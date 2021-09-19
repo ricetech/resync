@@ -1,0 +1,23 @@
+.prog-bar-wrapper {
+  position: relative;
+  background-color: $inprogress;
+  border-radius: 0.25em;
+  width: 100%;
+  height: 1em;
+  margin: 1em 0;
+}
+
+.prog-bar-notstarted {
+  position: absolute;
+  background-color: $notstarted;
+  border-radius: 0.25em 0 0 0.25em;
+  height: 1em;
+}
+
+.prog-bar-completed {
+  position: absolute;
+  background-color: $completed;
+  border-radius: 0 0.25em 0.25em 0;
+  height: 1em;
+  right: 0;
+}
