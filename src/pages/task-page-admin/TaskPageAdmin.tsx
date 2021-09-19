@@ -20,6 +20,7 @@ import {
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
 import NewTask from "../new-task";
+import Insights from "../insights";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -115,6 +116,9 @@ export const TaskPageAdmin = () => {
         </Route>
         <Route path={`${path}/add-course`}>
           <NewTask />
+        </Route>
+        <Route path={`${path}/insights`}>
+          <Insights />
         </Route>
       </Switch>
     </>
