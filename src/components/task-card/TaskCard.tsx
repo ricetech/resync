@@ -1,14 +1,15 @@
 import React from "react";
-import { Card, Badge } from "react-bootstrap";
+import { Card, Badge, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { ITask } from "../../shared/interfaces";
 import ProgressBar from "../progress-bar";
 interface ITaskCardProps {
   task: ITask;
   numStudents: number;
+  curStatus: string;
 }
 
-export const TaskCard = ({ task, numStudents }: ITaskCardProps) => {
+export const TaskCard = ({ task, numStudents, curStatus }: ITaskCardProps) => {
   const history = useHistory();
 
   const badgeComponents = () =>
@@ -20,13 +21,31 @@ export const TaskCard = ({ task, numStudents }: ITaskCardProps) => {
 
   return (
     <Card
-      className="clickable mb-4"
+      className="mb-4"
       onClick={() => history.push("/dash/tasks/?id=coursename")}
     >
       <Card.Body className="px-4">
-        <Card.Title>{task.name}</Card.Title>
-        {badgeComponents()}
-        <span className="px-2">Due: {task.deadline.toLocaleDateString()}</span>
+        <div className="spread-horizontally">
+          <div>
+            <Card.Title>{task.name}</Card.Title>
+            {badgeComponents()}
+            <span className="px-2">
+              Due: {task.deadline.toLocaleDateString()}
+            </span>
+          </div>
+          <div>
+            {curStatus === "PROGRESS" ? (
+              <Button variant="dark" size="sm" className="mt-2">
+                Begin Task
+              </Button>
+            ) : (
+              <Button variant="outline-dark" size="sm" className="mt-2">
+                Mark as Completed
+              </Button>
+            )}
+          </div>
+        </div>
+
         <ProgressBar
           percentInProgress={Math.round(
             (task.startTimes.length / numStudents) * 100

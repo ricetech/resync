@@ -41,7 +41,12 @@ const useQuery = () => {
 
 const taskCardComponents = () =>
   tasks.map((task: ITask) => (
-    <TaskCard key={task.taskId} task={task} numStudents={numStudents} />
+    <TaskCard
+      key={task.taskId}
+      task={task}
+      numStudents={numStudents}
+      curStatus={"PROGRESS"}
+    />
   ));
 
 export const TaskPage = () => {
