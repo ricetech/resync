@@ -10,6 +10,7 @@ import {
 import { Container, Row, Col, Button } from "react-bootstrap";
 import DashboardNavbar from "../../components/dashboard-navbar";
 import CourseCard from "../../components/course-card";
+import CourseCardAdmin from "../../components/course-card-admin";
 import UpcomingList from "../../components/upcoming-list";
 import { ICourse, ITask } from "../../shared/interfaces";
 import TaskPage from "../task-page";
@@ -31,12 +32,39 @@ const courses: ICourse[] = [
   },
 ];
 
+const adminCourses: ICourse[] = [
+  {
+    courseId: "0",
+    name: "MATH 999 - Calculus 99",
+    admin: ["Prof A", "Prof B"],
+    students: ["c", "d"],
+    tasks: [],
+  },
+  {
+    courseId: "1",
+    name: "CS 000 - Binary",
+    admin: ["Prof C", "Prof D"],
+    students: ["a", "b"],
+    tasks: [],
+  },
+];
+
 const courseCardComponents = () =>
   courses.map((course: ICourse) => (
     <CourseCard
       key={course.courseId}
       title={course.name}
       profs={course.admin}
+      tasks={course.tasks.length}
+    />
+  ));
+
+const adminCourseCardComponents = () =>
+  adminCourses.map((course: ICourse) => (
+    <CourseCardAdmin
+      key={course.courseId}
+      title={course.name}
+      students={course.students.length}
       tasks={course.tasks.length}
     />
   ));
@@ -90,6 +118,7 @@ export const StudentDashboard = () => {
                     >
                       View courses you're in
                     </Button>
+                    {adminCourseCardComponents()}
                   </>
                 )}
               </Col>
