@@ -63,7 +63,7 @@ const adminCourseCardComponents = () =>
     />
   ));
 
-export const StudentDashboard = () => {
+export const Dashboard = () => {
   let { path } = useRouteMatch();
   const [courseMode, setCourseMode] = useState("enrolled");
   const [show, setShow] = useState(false);
