@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import "./App.scss";
 import HomePage from "./pages/home";
+import Dashboard from "./pages/dashboard";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDpTUDYCRuEbWEoGOVNtXtcYeO8qAQ6Ap8",
@@ -22,6 +23,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/dash">
+          <Dashboard />
+        </Route>
         <Route path="/">
           <HomePage />
         </Route>

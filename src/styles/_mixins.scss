@@ -1,0 +1,26 @@
+@mixin breakpoint-min($min-width) {
+  @media (min-width: #{$min-width}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($max-width) {
+  @media (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin hide-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@mixin card-top($color) {
+  padding: 1rem;
+  margin-bottom: 0;
+  background-color: $color;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}

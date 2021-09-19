@@ -1,1 +1,29 @@
+@import "./styles/variables";
+@import "./styles/mixins";
+@import "./styles/bootstrapCustom";
+
+@import "./pages/home/home";
+@import "./pages/dashboard/dashboard";
+@import "./pages/task-page/task-page";
+@import "./pages/task-page-admin/task-page-admin";
+@import "./pages/new-task/new-task";
+@import "./pages/insights/insights";
+
+@import "./components/dashboard-navbar/dashboard-navbar";
+@import "./components/course-card/course-card";
+@import "./components/course-card-admin/course-card-admin";
+@import "./components/upcoming-list/upcoming-list";
+@import "./components/task-card/task-card";
+@import "./components/progress-bar/progress-bar";
+
+.clickable {
+  cursor: pointer;
+}
+
+.spread-horizontally {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @import "~bootstrap/scss/bootstrap";

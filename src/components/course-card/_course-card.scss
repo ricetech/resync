@@ -1,0 +1,17 @@
+.course-card-top-pink {
+  @include card-top($pink);
+}
+
+.course-card-top-teal {
+  @include card-top($teal);
+}
+
+.course-card-top-banana {
+  @include card-top($banana);
+}
+
+.course-card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
