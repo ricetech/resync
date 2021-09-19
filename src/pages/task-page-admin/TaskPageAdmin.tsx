@@ -1,8 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Link, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+  useHistory,
+  useRouteMatch,
+} from "react-router-dom";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
+import NewTask from "../new-task";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -39,15 +48,32 @@ const taskCardComponents = () =>
 
 export const TaskPageAdmin = () => {
   let query = useQuery();
+  let { path, url } = useRouteMatch();
+  const history = useHistory();
+  const addCourse = () => {
+    history.push(`${path}/add-course/courseid`);
+  };
   return (
     <>
-      <Col className="px-4" lg="10">
-        <h1>Tasks</h1>
-        <Button variant="dark" size="sm" className="mb-3">
-          Add Task
-        </Button>
-        {taskCardComponents()}
-      </Col>
+      <Switch>
+        <Route exact path={path}>
+          <Col className="px-4" lg="10">
+            <h1>Tasks</h1>
+            <Button
+              variant="dark"
+              size="sm"
+              className="mb-3"
+              onClick={addCourse}
+            >
+              Add Task
+            </Button>
+            {taskCardComponents()}
+          </Col>
+        </Route>
+        <Route path={`${path}/add-course`}>
+          <NewTask />
+        </Route>
+      </Switch>
     </>
   );
 };
