@@ -26,10 +26,7 @@ export const TaskCard = ({
     ));
 
   return (
-    <Card
-      className="mb-4"
-      onClick={() => history.push("/dash/tasks/?id=coursename")}
-    >
+    <Card className="mb-4">
       <Card.Body className="px-4">
         <div className="spread-horizontally">
           <div>
