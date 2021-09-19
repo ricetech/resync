@@ -18,6 +18,19 @@ const tasks = [
     startPercent: [],
     endPercent: [],
   },
+  {
+    taskId: "1",
+    name: "Quiz 1",
+    startDate: new Date(),
+    deadline: new Date(),
+    softDeadline: new Date(),
+    typeTag: ["Quiz"],
+    displayDate: true,
+    startTimes: [1],
+    endTimes: [2, 4, 1, 3],
+    startPercent: [],
+    endPercent: [],
+  },
 ];
 
 const numStudents = 5;
@@ -28,7 +41,7 @@ const useQuery = () => {
 
 const taskCardComponents = () =>
   tasks.map((task: ITask) => (
-    <TaskCard task={task} numStudents={numStudents} />
+    <TaskCard key={task.taskId} task={task} numStudents={numStudents} />
   ));
 
 export const TaskPage = () => {
