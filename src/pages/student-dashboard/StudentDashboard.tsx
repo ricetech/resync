@@ -14,6 +14,7 @@ import CourseCardAdmin from "../../components/course-card-admin";
 import UpcomingList from "../../components/upcoming-list";
 import { ICourse, ITask } from "../../shared/interfaces";
 import TaskPage from "../task-page";
+import TaskPageAdmin from "../task-page-admin";
 
 const courses: ICourse[] = [
   {
@@ -127,8 +128,11 @@ export const StudentDashboard = () => {
                 <UpcomingList />
               </Col>
             </Route>
-            <Route path={`${path}/:courseId`}>
+            <Route path={`${path}/tasks`}>
               <TaskPage />
+            </Route>
+            <Route path={`${path}/admin-tasks`}>
+              <TaskPageAdmin />
             </Route>
           </Switch>
         </Row>
