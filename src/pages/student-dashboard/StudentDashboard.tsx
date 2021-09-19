@@ -7,7 +7,7 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
 import DashboardNavbar from "../../components/dashboard-navbar";
 import CourseCard from "../../components/course-card";
 import CourseCardAdmin from "../../components/course-card-admin";
@@ -73,6 +73,11 @@ const adminCourseCardComponents = () =>
 export const StudentDashboard = () => {
   let { path, url } = useRouteMatch();
   const [courseMode, setCourseMode] = useState("enrolled");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [courseCode, setCourseCode] = useState("");
 
   const viewTaught = () => {
     setCourseMode("teaching");
@@ -80,6 +85,17 @@ export const StudentDashboard = () => {
 
   const viewEnrolled = () => {
     setCourseMode("enrolled");
+  };
+
+  const handleCourseCodeChange = (e) => {
+    setCourseCode(e.target.value);
+  };
+
+  const handleAddCourse = () => {
+    if (courseCode !== "") {
+      // API call
+      handleClose();
+    }
   };
 
   return (
@@ -93,7 +109,12 @@ export const StudentDashboard = () => {
                 <h1>Courses</h1>
                 {courseMode === "enrolled" ? (
                   <>
-                    <Button variant="dark" size="sm" className="mb-3">
+                    <Button
+                      variant="dark"
+                      size="sm"
+                      className="mb-3"
+                      onClick={handleShow}
+                    >
                       Join Course
                     </Button>{" "}
                     <Button
@@ -137,6 +158,32 @@ export const StudentDashboard = () => {
           </Switch>
         </Row>
       </Container>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Join a Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Enter the course code provided by your instructor below to join
+            their course
+          </p>
+          <Form.Control
+            type="input"
+            placeholder="Code"
+            name="courseCode"
+            onChange={handleCourseCodeChange}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleAddCourse}>
+            Add Course
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
