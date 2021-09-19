@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";

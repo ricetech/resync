@@ -1,11 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  Switch,
-  Route,
-  useLocation,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, useHistory, useRouteMatch } from "react-router-dom";
 import { Col, Button, Overlay, Tooltip } from "react-bootstrap";
 import TaskCard from "../../components/task-card";
 import { ITask } from "../../shared/interfaces";
