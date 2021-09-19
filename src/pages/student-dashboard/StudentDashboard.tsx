@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -43,6 +43,7 @@ const courseCardComponents = () =>
 
 export const StudentDashboard = () => {
   let { path, url } = useRouteMatch();
+  const [key, setKey] = useState("home");
 
   return (
     <>
